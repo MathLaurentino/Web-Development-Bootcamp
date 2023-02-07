@@ -93,13 +93,13 @@ prompt("What is your crush's name?");
 
     function randomico()
     {
-        // x = 0;
-        // do{
-        //     num = Math.random();
-        //     num = Math.floor((num * 10000) + 1);
-        //     console.log(num + "%");
-        //     x++;
-        // } while (num !== 100)
+        x = 0;
+        do{
+            num = Math.random();
+            num = Math.floor((num * 10000) + 1);
+            console.log(num + "%");
+            x++;
+        } while (num !== 100)
 
         num = Math.random();
         num = Math.floor((num * 10000) + 1);
@@ -260,3 +260,42 @@ var palavra = split(str);
 console.log(palavra[1]);
 
 //---------------------------------------
+
+
+//146
+
+ document.getElementsByClassName("btn");
+
+ document.getElementsByTagName("li")[1].style.color="red";
+
+ document.getElementsByTagName("li").length;
+
+ document.getElementById("title").innerHTML= "Good by";
+
+ document.querySelector("li a")
+
+ document.querySelector("li.item");​
+
+ document.querySelector("#list .item");
+
+ document.querySelectorAll("#list .item");
+
+ document.querySelectorAll("#list .item")[2].style.color="blue";
+
+
+
+
+ //145
+
+    document.querySelector("button.btn").classList;
+
+    document.querySelector("button.btn").classList.toggle("huge");
+
+
+
+ //147
+
+    document.querySelector("a").attributes
+    document.querySelector("a").getAttribute("href")
+    document.querySelector("a").setAttribute("href","https://www.youtube.com")
+
