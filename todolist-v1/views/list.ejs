@@ -1,24 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-        <% for(var x = 0; x < itens.length; x++){ %>
-            <li> <%= itens[x] %> </li>
-        <% } %>
-    </ul>
-    <h1> <%= kinfOfDay %> </h1>
+<%- include("header") -%>
 
-    <form action="/" method="post">
-        <label>Do list</label>
-        <input type="text" name="newItem">
-        <input type="submit" value="enviar">
+<div class="box" id="heading">
+
+    <h1> <%= listTitle %> </h1>
+
+</div>
+
+
+<div class="box">
+    
+    <% for(var x = 0; x < itens.length; x++){ %>
+        <div class="item">
+            <input type="checkbox">
+            <p> <%= itens[x] %> </p>
+        </div>
+    <% } %>
+
+    <form class="item" action="/" method="post">
+
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button type="submit" name="button" value="<%= listTitle %>">+</button>
+
     </form>
 
-</body>
-</html>
+</div>
+    
+<%- include("footer") -%>

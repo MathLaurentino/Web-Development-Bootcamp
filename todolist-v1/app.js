@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 
 const bodyParser = require('body-parser');
-
-var itens = ["Buy food", "Cook Food", "Eat Food"];
+const date = require(__dirname + "/date.js"); //local
 
 // Config
     // Template Engine
@@ -11,41 +10,41 @@ var itens = ["Buy food", "Cook Food", "Eat Food"];
     // BodyParser
         app.use(bodyParser.urlencoded({extended: false}));
         app.use(bodyParser.json());
+    // Static Files
+        app.use(express.static("public"));
+
+
+//Global Vars
+
+    let doList = ["Buy food", "Cook Food", "Eat Food"];
+    let workItens = [];
+
 
 // Rotas
 
     app.get("/", function(req, res){
-
-        var today = new Date();
-        var currentDay = today.getDay();
-        var day = "";
-
-        // if (currentDay === 6 || currentDay === 0) {
-        //     day = "weekend";
-        // } else {
-        //     day = "week";
-        // }
-
-        var options = {
-            weekday: "long",
-            day: "numeric",
-            month: "long"
-        }
-
-        var day = today.toLocaleDateString("en-US", options);
-
-        res.render('list', {kinfOfDay: day, itens: itens});
-
+        day = date.getDay();
+        res.render('list', {listTitle: day, itens: doList});
     });
 
     app.post("/", function(req, res){
-        var item = req.body.newItem;
-        itens.push(item);
-        res.redirect("/")
+        let item = req.body.newItem;
+        
+        if (req.body.button == "Work List") {
+            workItens.push(item);
+            res.redirect("/work");
+        } else {
+            doList.push(item);
+            res.redirect("/")
+        }
     });
 
 
+    app.get("/work", function(req, res){
+        res.render("list", {listTitle: "Work List", itens: workItens});
+    });
 
+    
 // Server
     app.listen(3000, function(){
         console.log("Rodando na porta 3000");
