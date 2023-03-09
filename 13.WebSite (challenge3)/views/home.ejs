@@ -1,0 +1,22 @@
+<%- include('partials/header'); -%>
+
+<h1> Home </h1>
+
+<p> <%= home %> </p>
+
+<% data.forEach(function(chave){ %>
+    <h2><%= chave.title %></h2>
+
+    <% if (chave.text.length > 100) { %>
+
+        <p> <%= chave.text.substr(0, 100) + "..." %> <a href="/posts/<%= chave.title %>">Read More</a> </p> 
+
+    <% } else { %> <!-- Caso Não tenha mais de 100 caracteres não tem motivo para ter os rtes pontos -->
+
+        <p><%= chave.text %> <a href="/posts/<%= chave.title %>">Read More</a> </p> 
+        
+    <% } %>
+    
+<% }) %>
+ 
+<%- include('partials/footer'); -%>
